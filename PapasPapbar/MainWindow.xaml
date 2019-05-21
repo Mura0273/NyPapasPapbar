@@ -9,9 +9,8 @@
     <Grid>
         <Button Content="Reservation" Click="Reservation_Click" Margin="240,109,209,265"/>
         <Button Content="Medlemskab" Click="Membership_Click" Margin="240,159,209,215"/>
-        <Button Content="Spil bibliotek" Click="BoardgameameLibrary_Click" Margin="416,259,209,115"/>
+        <Button Content="Spil bibliotek" Click="BoardgameLibrary_Click" Margin="416,259,209,115"/>
         <Button Content="Spil statestik" Click="GameStats_Click" Margin="240,259,381,115"/>
         <Button Content="Board" Click="Table_Click" Margin="240,209,209,165"/>
-
     </Grid>
 </Window>

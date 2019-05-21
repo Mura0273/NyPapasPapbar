@@ -38,7 +38,7 @@ namespace PapasPapbar
             Close();
         }
 
-        private void BoardgameameLibrary_Click(object sender, RoutedEventArgs e)
+        private void BoardgameLibrary_Click(object sender, RoutedEventArgs e)
         {
             UI.Boardgame Switch = new UI.Boardgame();
             Switch.Show();
@@ -56,5 +56,6 @@ namespace PapasPapbar
             Switch.Show();
             Close();
         }
+
     }
 }
