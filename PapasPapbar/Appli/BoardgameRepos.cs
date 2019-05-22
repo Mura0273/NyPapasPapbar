@@ -37,28 +37,52 @@ namespace PapasPapbar.Appli
 
         public void CreateBoardgame()
         {
-            using (SqlConnection con = new SqlConnection(Connection.connectionString))
+            try
             {
-            con.Open();
-                using (SqlCommand command1 = new SqlCommand())
-                {
-                    command1.CommandText = "INSERT INTO [C_DB13_2018].[dbo].[Game_Library] (Boardgame_Name, Player_Count, Audience, Game_Time, Distributor, GameTag) VALUES " +
-                        "(@Boardgame_name, @Player_Count, @Audience, @Game_Time, @Distributor, @GameTag);";
-                    command1.CommandType = CommandType.Text;
-                    command1.Connection = con;
-
-                    command1.Parameters.Add(new SqlParameter("Boardgame_name", BoardgameName));
-                    command1.Parameters.Add(new SqlParameter("Player_Count", PlayerCount));
-                    command1.Parameters.Add(new SqlParameter("Audience", Audience));
-                    command1.Parameters.Add(new SqlParameter("Game_Time", GameTime));
-                    command1.Parameters.Add(new SqlParameter("Distributor", Distributor));
-                    command1.Parameters.Add(new SqlParameter("GameTag", GameTag));
-
-                    command1.ExecuteNonQuery();
-                    con.Close();
-                }
+                con.Open();
+                cmd = new SqlCommand("Insert into Game_Library (Boardgame_Name, Player_Count, Audience, Game_Time, Distributor, GameTag) Values (@Boardgame_Name, @Player_Count, @Audience, @Game_Time, @Distributor, @GameTag)", con);
+                cmd.Parameters.AddWithValue("Boardgame_Name", txtBrætspil.Text.Trim());
+                cmd.Parameters.AddWithValue("Player_Count", txtAntal.Text.Trim());
+                cmd.Parameters.AddWithValue("Audience", txtAldersgruppe.Text.Trim());
+                cmd.Parameters.AddWithValue("Game_Time", txtSpilletid.Text.Trim());
+                cmd.Parameters.AddWithValue("Distributor", txtDistrubutør.Text.Trim());
+                cmd.Parameters.AddWithValue("GameTag", txtGenre.Text.Trim());
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Record Save Successfully", "Saved", MessageBoxButton.OK);
+                GetData();
+                Reset();
+            }
+            catch (System.Exception)
+            {
+                throw;
             }
         }
+
+
+        //public void CreateBoardgame()
+        //{
+        //    using (SqlConnection con = new SqlConnection(Connection.connectionString))
+        //    {
+        //    con.Open();
+        //        using (SqlCommand command1 = new SqlCommand())
+        //        {
+        //            command1.CommandText = "INSERT INTO [C_DB13_2018].[dbo].[Game_Library] (Boardgame_Name, Player_Count, Audience, Game_Time, Distributor, GameTag) VALUES (@Boardgame_Name, @Player_Count, @Audience, @Game_Time, @Distributor, @GameTag);";
+        //            command1.CommandType = CommandType.Text;
+        //            command1.Connection = con;
+
+        //            command1.Parameters.Add(new SqlParameter("Boardgame_Name", BoardgameName));
+        //            command1.Parameters.Add(new SqlParameter("Player_Count", PlayerCount));
+        //            command1.Parameters.Add(new SqlParameter("Audience", Audience));
+        //            command1.Parameters.Add(new SqlParameter("Game_Time", GameTime));
+        //            command1.Parameters.Add(new SqlParameter("Distributor", Distributor));
+        //            command1.Parameters.Add(new SqlParameter("GameTag", GameTag));
+
+        //            command1.ExecuteNonQuery();
+        //            con.Close();
+        //        }
+        //    }
+        //}
         public void UpdateBoardgame()
         {
             using (SqlConnection con = new SqlConnection(Connection.connectionString))

@@ -72,8 +72,6 @@ namespace PapasPapbar.UI
             btnInsert.IsEnabled = true;
         }
 
-
-
         //Indsætfunktion til Boardgame
         public void btnInsert_Click(object sender, RoutedEventArgs e)
         {
