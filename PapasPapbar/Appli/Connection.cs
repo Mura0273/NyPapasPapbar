@@ -8,7 +8,7 @@ using System.Data;
 
 namespace PapasPapbar.Appli
 {
-    public static class Connection
+    public class Connection
     {
 
            public static string connectionString =
