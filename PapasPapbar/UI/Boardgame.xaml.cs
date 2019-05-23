@@ -26,7 +26,7 @@ namespace PapasPapbar.UI
         {
             InitializeComponent();
         }
-        private SqlCommand cmd;
+        private SqlCommand cmd77;
         private SqlDataReader reader;
 
 
@@ -44,7 +44,7 @@ namespace PapasPapbar.UI
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataTable dt = new DataTable();
-            reader = cmd.ExecuteReader();
+            reader = cmd77.ExecuteReader();
 
             dt.Load(reader);
             txtBrætspil.Focus();
@@ -75,43 +75,22 @@ namespace PapasPapbar.UI
         //Indsætfunktion til Boardgame
         public void btnInsert_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                control.AddBoardGame();
-                BGR.BoardgameName = txtBrætspil.Text;
-                BGR.PlayerCount = txtAntal.Text;
-                BGR.Audience = txtAldersgruppe.Text;
-                BGR.GameTime = txtSpilletid.Text;
-                BGR.Distributor = txtDistrubutør.Text;
-                BGR.GameTag = txtGenre.Text;
-                control.UpdateBoardGame();
-                MessageBox.Show("Record Save Successfully", "Saved", MessageBoxButton.OK);
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
+            Create();
+            Read();
         }
 
         //Slettefunktion til Boardgame
         public void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            BGR.BoardgameId = txtId.Text;
-            control.DeleteBoardGame();
-            MessageBox.Show("Record Deleted Successfully", "Deleted", MessageBoxButton.OK);
+            Delete();
+            Read();
         }
 
         //Updatefunktion til Boardgame
         public void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            BGR.BoardgameName = txtBrætspil.Text;
-            BGR.PlayerCount = txtAntal.Text;
-            BGR.Audience = txtAldersgruppe.Text;
-            BGR.GameTime = txtSpilletid.Text;
-            BGR.Distributor = txtDistrubutør.Text;
-            BGR.GameTag = txtGenre.Text;
-            BGR.BoardgameId = txtId.Text;
-            control.UpdateBoardGame();
+            Update();
+            Read();
             MessageBox.Show("Record Update Successfully", "Updated", MessageBoxButton.OK);
         }
 
@@ -142,6 +121,37 @@ namespace PapasPapbar.UI
             btnDelete.IsEnabled = true;
             btnInsert.IsEnabled = false;
         }
-
+        public void Create()
+        {
+            BGR.BoardgameName = txtBrætspil.Text;
+            BGR.PlayerCount = txtAntal.Text;
+            BGR.Audience = txtAldersgruppe.Text;
+            BGR.GameTime = txtSpilletid.Text;
+            BGR.Distributor = txtDistrubutør.Text;
+            BGR.GameTag = txtGenre.Text;
+            control.AddBoardGame();
+        }
+        public void Update()
+        {
+            BGR.BoardgameName = txtBrætspil.Text;
+            BGR.PlayerCount = txtAntal.Text;
+            BGR.Audience = txtAldersgruppe.Text;
+            BGR.GameTime = txtSpilletid.Text;
+            BGR.Distributor = txtDistrubutør.Text;
+            BGR.GameTag = txtGenre.Text;
+            BGR.BoardgameId = txtId.Text;
+            control.UpdateBoardGame();
+        }
+        public void Delete()
+        {
+            BGR.BoardgameId = txtId.Text;
+            control.DeleteBoardGame();
+        }
+        public void Read()
+        {
+            DataGrid1.DataContext = null;
+            control.ReadBoardGameData();
+            DataGrid1.DataContext = BGR.dataTable;
+        }
     }
 }
