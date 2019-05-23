@@ -26,12 +26,12 @@ namespace PapasPapbar.UI
         {
             InitializeComponent();
         }
-        private SqlCommand cmd77;
+        private SqlCommand cmd;
         private SqlDataReader reader;
 
 
         Controller control = new Controller();
-        BoardgameRepos BGR = new BoardgameRepos();
+        
 
         private void Boardgame_Tilbage_Click(object sender, RoutedEventArgs e)
         {
@@ -43,14 +43,14 @@ namespace PapasPapbar.UI
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataTable dt = new DataTable();
-            reader = cmd77.ExecuteReader();
+            //DataTable dt = new DataTable();
+            //reader = cmd.ExecuteReader();
 
-            dt.Load(reader);
-            txtBrætspil.Focus();
-            control.ReadBoardGameData();
-            DataGrid1.Columns[0].Visibility = Visibility.Collapsed;
-            DataGrid1.ItemsSource = dt.DefaultView;
+            //dt.Load(reader);
+            //txtBrætspil.Focus();
+            //control.ReadBoardGameData();
+            //DataGrid1.Columns[0].Visibility = Visibility.Collapsed;
+            //DataGrid1.ItemsSource = dt.DefaultView;
 
         }
 
@@ -123,35 +123,35 @@ namespace PapasPapbar.UI
         }
         public void Create()
         {
-            BGR.BoardgameName = txtBrætspil.Text;
-            BGR.PlayerCount = txtAntal.Text;
-            BGR.Audience = txtAldersgruppe.Text;
-            BGR.GameTime = txtSpilletid.Text;
-            BGR.Distributor = txtDistrubutør.Text;
-            BGR.GameTag = txtGenre.Text;
-            control.AddBoardGame();
+            //BGR.BoardgameName = txtBrætspil.Text;
+            //BGR.PlayerCount = txtAntal.Text;
+            //BGR.Audience = txtAldersgruppe.Text;
+            //BGR.GameTime = txtSpilletid.Text;
+            //BGR.Distributor = txtDistrubutør.Text;
+            //BGR.GameTag = txtGenre.Text;
+            //control.AddBoardGame();
         }
         public void Update()
         {
-            BGR.BoardgameName = txtBrætspil.Text;
-            BGR.PlayerCount = txtAntal.Text;
-            BGR.Audience = txtAldersgruppe.Text;
-            BGR.GameTime = txtSpilletid.Text;
-            BGR.Distributor = txtDistrubutør.Text;
-            BGR.GameTag = txtGenre.Text;
-            BGR.BoardgameId = txtId.Text;
-            control.UpdateBoardGame();
+            //BGR.BoardgameName = txtBrætspil.Text;
+            //BGR.PlayerCount = txtAntal.Text;
+            //BGR.Audience = txtAldersgruppe.Text;
+            //BGR.GameTime = txtSpilletid.Text;
+            //BGR.Distributor = txtDistrubutør.Text;
+            //BGR.GameTag = txtGenre.Text;
+            //BGR.BoardgameId = txtId.Text;
+            //control.UpdateBoardGame();
         }
         public void Delete()
         {
-            BGR.BoardgameId = txtId.Text;
-            control.DeleteBoardGame();
+            //BGR.BoardgameId = txtId.Text;
+            //control.DeleteBoardGame();
         }
         public void Read()
         {
-            DataGrid1.DataContext = null;
-            control.ReadBoardGameData();
-            DataGrid1.DataContext = BGR.dataTable;
+            //DataGrid1.DataContext = null;
+            //control.ReadBoardGameData();
+            //DataGrid1.DataContext = BGR.dataTable;
         }
     }
 }
