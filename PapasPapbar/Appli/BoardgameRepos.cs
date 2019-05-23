@@ -71,12 +71,14 @@ namespace PapasPapbar.Appli
                     command1.CommandType = CommandType.StoredProcedure;
                     command1.Connection = con;
 
-                    command1.Parameters.Add(new SqlParameter("@Boardgame_Name", BoardgameName));
-                    command1.Parameters.Add(new SqlParameter("@Player_Count", PlayerCount));
-                    command1.Parameters.Add(new SqlParameter("@Audience", Audience));
-                    command1.Parameters.Add(new SqlParameter("@Game_Time", GameTime));
-                    command1.Parameters.Add(new SqlParameter("@Distributor", Distributor));
-                    command1.Parameters.Add(new SqlParameter("@GameTag", GameTag));
+                    command1.Parameters.Add(new SqlParameter("@Boardgame_Name, ", BoardgameName));
+                    command1.Parameters.Add(new SqlParameter("@Player_Count, ", PlayerCount));
+                    command1.Parameters.Add(new SqlParameter("@Audience, ", Audience));
+                    command1.Parameters.Add(new SqlParameter("@Game_Time, ", GameTime));
+                    command1.Parameters.Add(new SqlParameter("@Distributor, ", Distributor));
+                    command1.Parameters.Add(new SqlParameter("@GameTag, ", GameTag));
+
+
 
                     command1.ExecuteNonQuery();
                     con.Close();
