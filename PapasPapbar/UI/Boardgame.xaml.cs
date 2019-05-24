@@ -26,7 +26,7 @@ namespace PapasPapbar.UI
         {
             InitializeComponent();
         }
-        private SqlCommand cmd;
+        private BoardgameRepos boardgameRepos = new BoardgameRepos();
         private SqlDataReader reader;
 
 
@@ -133,14 +133,7 @@ namespace PapasPapbar.UI
         }
         public void Update()
         {
-            //BGR.BoardgameName = txtBrætspil.Text;
-            //BGR.PlayerCount = txtAntal.Text;
-            //BGR.Audience = txtAldersgruppe.Text;
-            //BGR.GameTime = txtSpilletid.Text;
-            //BGR.Distributor = txtDistrubutør.Text;
-            //BGR.GameTag = txtGenre.Text;
-            //BGR.BoardgameId = txtId.Text;
-            //control.UpdateBoardGame();
+            boardgameRepos.EditBoardgame();
         }
         public void Delete()
         {

@@ -37,5 +37,9 @@ namespace PapasPapbar.Appli
         {
             boardgame.DeleteBoardgame(boardgameId);
         }
+        public void ShowBoardgame(Boardgame boardgame)
+        {
+            boardgame.ShowBoardgame(boardgame.BoardgameId);
+        }
     }
 }
