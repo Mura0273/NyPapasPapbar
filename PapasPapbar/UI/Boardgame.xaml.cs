@@ -28,10 +28,10 @@ namespace PapasPapbar.UI
         }
         private BoardgameRepos boardgameRepos = new BoardgameRepos();
         private SqlDataReader reader;
+        private List<Boardgame> Boardgames = new List<Boardgame>();
 
 
-        Controller control = new Controller();
-        
+        Controller control = new Controller();      
 
         private void Boardgame_Tilbage_Click(object sender, RoutedEventArgs e)
         {
@@ -82,8 +82,8 @@ namespace PapasPapbar.UI
         //Slettefunktion til Boardgame
         public void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            Delete();
-            Read();
+            //Delete();
+            //Read();
         }
 
         //Updatefunktion til Boardgame
@@ -133,18 +133,24 @@ namespace PapasPapbar.UI
         }
         public void Update()
         {
-            boardgameRepos.EditBoardgame();
+            Boardgames = boardgameRepos.DisplayBoardgames();
+            List<Object> Boardgamelist = new List<Object>();
+            for (int i = 0; i < Boardgames.Count; i++)
+            {
+                Boardgamelist.Add(new { OrderID = Boardgamelist[i].boardgameName, Customer = Boardgamelist[i].Customer.CompanyName, DateOfPurchase = Boardgamelist[i].DateOfPurchase, TotalPrice = Boardgamelist[i].TotalPrice });
+                //boardgameName, numberOfPlayers, audience, expectedGameTime, distributor, gameTag, boardgameId
+                //boardgameRepos.EditBoardgame();
+            }
+            //public void Delete()
+            //{
+            //    //BGR.BoardgameId = txtId.Text;
+            //    //control.DeleteBoardGame();
+            //}
+            //public void Read()
+            //{
+            //    //DataGrid1.DataContext = null;
+            //    //control.ReadBoardGameData();
+            //    //DataGrid1.DataContext = BGR.dataTable;
+            //}
         }
-        public void Delete()
-        {
-            //BGR.BoardgameId = txtId.Text;
-            //control.DeleteBoardGame();
-        }
-        public void Read()
-        {
-            //DataGrid1.DataContext = null;
-            //control.ReadBoardGameData();
-            //DataGrid1.DataContext = BGR.dataTable;
-        }
-    }
 }
