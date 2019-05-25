@@ -79,7 +79,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Appli\BoardgameRepos.cs" />
-    <Compile Include="Appli\Connection.cs" />
+    <Compile Include="Domain\Connection.cs" />
     <Compile Include="Appli\Controller.cs" />
     <Compile Include="Appli\EventRepos.cs" />
     <Compile Include="Appli\GameStatsRepos.cs" />

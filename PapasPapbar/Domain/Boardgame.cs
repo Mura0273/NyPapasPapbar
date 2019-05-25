@@ -1,5 +1,4 @@
-﻿using PapasPapbar.Appli;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PapasPapbar.Domain
 {
-    public class Boardgame : Appli.Connection
+    public class Boardgame : Domain.Connection
     {
         private string boardgameName;
         private string numberOfPlayers;
@@ -171,16 +170,36 @@ namespace PapasPapbar.Domain
                 }
             }
         }
-        public void ShowBoardgame()
+        public List<Boardgame> ShowBoardgame()
         {
+            List<Boardgame> boardgames = new List<Boardgame>();
             using (SqlConnection con = new SqlConnection(Connection.connectionString))
             {
-                dataTable.Clear();
-                string query1 = "SELECT Boardgame_Name, Player_Count, Audience, Game_Time, Distributor, GameTag, Boardgame_Id FROM Game_Library";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query1, con);
-                sqlDataAdapter.Fill(dataSet);
-                dataTable = dataSet.Tables[0];
+                con.Open();
+            
+                //Ændre navnet ShowBoardGame til navnet på vores stored procedure.
+                SqlCommand command = new SqlCommand("ShowBoardgame", con);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@BoardgameId", boardgameId);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string boardgameName = reader["BoardgameName"].ToString();
+                        string numberOfPlayers = reader["PlayerCount"].ToString();
+                        string audience = reader["Audience"].ToString();
+                        string expectedGameTime = reader["GameTime"].ToString();
+                        string distributor = reader["Distributor"].ToString();
+                        string gameTag = reader["GameTag"].ToString();
+                        int _boardgameId = int.Parse(reader["BoardgameId"].ToString());
+                        boardgames.Add(new Boardgame(boardgameName, numberOfPlayers, audience, expectedGameTime, distributor, gameTag, boardgameId));
+                    }
+                }
             }
+            return boardgames;
         }
     }
 }

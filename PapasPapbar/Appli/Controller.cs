@@ -13,23 +13,23 @@ namespace PapasPapbar.Appli
         //public void AddBoardGame()
         //{
         //    BoardgameRepos BG = new BoardgameRepos();
-        //    BG.CreateBoardgame();
+        //    BG.AddBoardgame();
 
         //}
-        //public void UpdateBoardGame()
-        //{
-        //    BoardgameRepos BG = new BoardgameRepos();
-        //    BG.UpdateBoardgame();
-        //}
-        //public void DeleteBoardGame()
-        //{
-        //    BoardgameRepos BG = new BoardgameRepos();
-        //    BG.DeleteBoardgame();
-        //}
-        //public void ReadBoardGameData()
-        //{
-        //    BoardgameRepos BG = new BoardgameRepos();
-        //    BG.ReadData();
-        //}
-    }
+            //public void UpdateBoardGame()
+            //{
+            //    BoardgameRepos BG = new BoardgameRepos();
+            //    BG.UpdateBoardgame();
+            //}
+            //public void DeleteBoardGame()
+            //{
+            //    BoardgameRepos BG = new BoardgameRepos();
+            //    BG.DeleteBoardgame();
+            //}
+            //public void ReadBoardGameData()
+            //{
+            //    BoardgameRepos BG = new BoardgameRepos();
+            //    BG.ReadData();
+            //}
+        }
 }
