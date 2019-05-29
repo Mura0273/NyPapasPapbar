@@ -87,5 +87,39 @@ namespace PapasPapbar.Domain
                 con.Close();
             }
         }
+        public List<Boardgame> GetBoardgame(int boardgameId)
+        {
+            List<Boardgame> boardgames = new List<Boardgame>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("ViewBoardgameLibrary", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@BoardgameId", boardgameId);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        string boardgameName = (reader["Boardgame_Name"].ToString());
+                        string playerCount = (reader["Player_Count"].ToString());
+                        string audience = (reader["Audience"].ToString());
+                        string gameTime = (reader["Game_Time"].ToString());
+                        string distributor = (reader["Distributor"].ToString());
+                        string gameTag = (reader["GameTag"].ToString());
+                        int _boardgameId = int.Parse(reader["Boardgame_Id"].ToString());
+
+                        boardgames.Add(new Boardgame(boardgameName, playerCount, audience, gameTime, distributor, gameTag, _boardgameId));
+                    }
+                }
+            }
+
+            return boardgames;
+        }
     }
 }
