@@ -11,36 +11,43 @@ namespace PapasPapbar.Domain
     public class Reservation : Connection
     {
         //skal nok ikke have to DateTimes.
-        public DateTime ReservationTime { get; set; }
-        public DateTime ReservationDate { get; set; }
+        public string ReservationDate { get; set; }
+        public string ReservationTime { get; set; }
+        public string CustommerName { get; set; }
+        public string Participant { get; set; }
+        public int ReservationTable { get; set; }
+        public string ReservationCommant { get; set; }
         public int ReservationId { get; set; }
-        public string CustomerName { get; set; }
-        public string Comment { get; set; }
 
-        public Reservation(DateTime reservationTime, DateTime reservationDate, int reservationId, string customerName, string comment)
+        public Reservation() { }
+
+        public Reservation(string reservationDate, string reservationTime, string custommerName, string participant, int reservationTable, string reservationCommant, int reservationId)
         {
-            this.ReservationTime = reservationTime;
             this.ReservationDate = reservationDate;
+            this.ReservationTime = reservationTime;
+            this.CustommerName = custommerName;
+            this.Participant = participant;
+            this.ReservationTable = reservationTable;
+            this.ReservationCommant = reservationCommant;
             this.ReservationId = reservationId;
-            this.CustomerName = customerName;
-            this.Comment = comment;
         }
-        public void AddReservation(DateTime reservationTime, DateTime reservationDate, int reservationId, string customerName, string comment)
+
+        public void AddReservation(string reservationDate, string reservationTime, string custommerName, string participant, string reservationCommant)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                connection.Open();
+                con.Open();
 
-                SqlCommand command = new SqlCommand("AddReservation", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("ReservationTime", reservationTime);
-                command.Parameters.AddWithValue("Reservationdate", reservationDate);
-                command.Parameters.AddWithValue("ReservationId", reservationId);
-                command.Parameters.AddWithValue("CustomerName", customerName);
-                command.Parameters.AddWithValue("Comment", comment);
+                SqlCommand cmd = new SqlCommand("InsertReservation", con);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                command.ExecuteNonQuery();
-                connection.Close();
+                cmd.Parameters.AddWithValue("@Rerservation_Date", reservationDate);
+                cmd.Parameters.AddWithValue("@Reservation_Time", reservationTime);
+                cmd.Parameters.AddWithValue("@Customer_Name", custommerName);
+                cmd.Parameters.AddWithValue("@Participant", participant);
+                cmd.Parameters.AddWithValue("@Comments", reservationCommant);
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
         }
     }
