@@ -38,7 +38,6 @@ namespace PapasPapbar.UI
 
         private void AddReservation_Click(object sender, RoutedEventArgs e)
         {
-            Domain.Reservation reservation = new Domain.Reservation();
             reservation.ReservationDate = txtReservationDate.Text.ToString();
 
             if (txtReservationTime != null && txtCustomerName != null && txtParticipant != null && txtReservationComment != null)
@@ -61,7 +60,8 @@ namespace PapasPapbar.UI
 
         private void DeleteReservation_Click(object sender, RoutedEventArgs e)
         {
-
+            reservationRepo.DeleteReservation(reservation.ReservationId);
+            this.Close();
         }
 
         private void UpdateReservation_Click(object sender, RoutedEventArgs e)

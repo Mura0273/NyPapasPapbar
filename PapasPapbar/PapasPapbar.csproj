@@ -70,6 +70,7 @@
     <Compile Include="UI\Table.xaml.cs">
       <DependentUpon>Table.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\WindowDeleteBoardgame.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,7 +89,6 @@
     <Compile Include="Appli\ReservationRepos.cs" />
     <Compile Include="Appli\TableRepos.cs" />
     <Compile Include="Domain\Boardgame.cs" />
-    <Compile Include="Domain\EventReservation.cs" />
     <Compile Include="Domain\GameStats.cs" />
     <Compile Include="Domain\IMembership.cs" />
     <Compile Include="Domain\Membership.cs" />

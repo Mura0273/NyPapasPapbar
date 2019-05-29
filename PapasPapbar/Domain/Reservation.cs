@@ -50,5 +50,19 @@ namespace PapasPapbar.Domain
                 con.Close();
             }
         }
+        public void DeleteReservation(int reservationId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("DeleteReservation", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@ReservationId", reservationId);
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }

@@ -17,5 +17,9 @@ namespace PapasPapbar.Appli
         {
             reservation.AddReservation(reservation.ReservationDate, reservation.ReservationTime, reservation.CustommerName, reservation.Participant, reservation.ReservationCommant);
         }
+        public void DeleteReservation(int reservationId)
+        {
+            reservation.DeleteReservation(reservation.ReservationId);
+        }
     }
 }

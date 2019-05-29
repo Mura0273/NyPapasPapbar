@@ -20,7 +20,8 @@ namespace PapasPapbar.UI
         }
         private Appli.BoardgameRepos boardgameRepos = new Appli.BoardgameRepos();
         private Domain.Boardgame boardgame = new Domain.Boardgame();
-        private int boardgameId;
+        //private Boardgame boardgame;
+        //private int boardgameId;
         private SqlDataReader reader;
         private SqlCommand cmd;
 
@@ -70,9 +71,30 @@ namespace PapasPapbar.UI
         //Slettefunktion til Boardgame
         public void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            boardgameRepos.DeleteBoardgame(boardgameId);
-            ShowData_Boardgame();
-            Reset_Boardgame();
+            if (boardgame != null)
+            {
+                WindowDeleteOrder weo = new WindowDeleteOrder(boardgame);
+                weo.ShowDialog();
+                Update();
+            }
+            else
+            {
+                WindowShowDialog wsd = new WindowShowDialog();
+                wsd.LabelShowDialog.Content = "Ingen ordre er valgt!";
+                wsd.ShowDialog();
+            }
+            //List<Boardgame> boardgames = boardgameRepos.DisplayBoardgame(_boardgame);
+            //for (int i = 0; i < orderlines.Count; i++)
+            //{
+            //    Product product = orderlines[i].Product;
+            //    product.ProductAmount += orderlines[i].Amount;
+            //    productRepository.EditProduct(product);
+            //    boardgameRepos.DeleteBoardgame(boardgame.BoardgameId);
+            //}
+
+            //ShowData_Boardgame();
+            //Reset_Boardgame();
+            //this.Close();
         }
 
         //Updatefunktion til Boardgame
