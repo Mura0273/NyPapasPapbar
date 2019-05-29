@@ -5,31 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PapasPapbar.UI"
         mc:Ignorable="d"
-        Title="Boardgame" Height="647.431" Width="890.711">
-    <Grid Margin="0,10,0,40">
+        Title="Boardgame" Height="672.931" Width="989.711">
+    <Grid Margin="10,10,0,10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="415*"/>
+            <ColumnDefinition Width="24*"/>
         </Grid.ColumnDefinitions>
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="249,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtBrætspil" TabIndex="0"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="249,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtAntal" />
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="249,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtAldersgruppe"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="249,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtSpilletid" />
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="249,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtDistrubutør" />
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="249,208,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtGenre" />
-        <Label Content="Brætspil:" HorizontalAlignment="Left" Margin="115,36,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="72" />
-        <Label Content="Antal:" HorizontalAlignment="Left" Margin="115,73,0,0" VerticalAlignment="Top" FontSize="16" Height="32" Width="51" />
-        <Label Content="Aldersgruppe:" HorizontalAlignment="Left" Margin="115,105,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="111" />
-        <Label Content="Spilletid:" HorizontalAlignment="Left" Margin="115,136,0,0" VerticalAlignment="Top" FontSize="16" Height="32" Width="71" />
-        <Label Content="Distrubutør:" HorizontalAlignment="Left" Margin="115,171,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="95" />
-        <Label Content="Genre:" HorizontalAlignment="Left" Margin="116,204,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="57" />
-        <Button Content="Reset" HorizontalAlignment="Left" Margin="399,267,0,0" VerticalAlignment="Top" Width="110" Height="31" FontSize="16" FontWeight="Bold" x:Name="btnReset" Click="btnReset_Click"/>
-        <Button Content="Insert" HorizontalAlignment="Left" Margin="514,267,0,0" VerticalAlignment="Top" Width="109" Height="31" FontSize="16" FontWeight="Bold" x:Name="btnInsert" Click="btnInsert_Click"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="628,267,0,0" VerticalAlignment="Top" Width="108" Height="31" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.49,2.283" x:Name="btnDelete" Click="btnDelete_Click" IsEnabled="False"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="741,267,0,0" VerticalAlignment="Top" Width="109" Height="31" FontSize="16" FontWeight="Bold" x:Name="btnUpdate" Click="btnUpdate_Click" IsEnabled="False"/>
-        <Button Content="Tilbage" Margin="10,0,820,603" Width="60" Height="20" Click="Boardgame_Tilbage_Click" VerticalAlignment="Bottom"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="116,268,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="18" x:Name="txtSearch" TextChanged="txtSearch_TextChanged"/>
-        <Label Content="Search:" HorizontalAlignment="Left" Margin="38,265,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="61"/>
-        <DataGrid Name="DataGrid1"  HorizontalAlignment="Left" Margin="17,350,0,-25" Width="855" RenderTransformOrigin="0.5,0.5" FontSize="18" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid1_SelectionChanged" ColumnWidth="*">
+        <TextBox HorizontalAlignment="Left" Height="29" Margin="249,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtBrætspil"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="249,53,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtAntal" />
+        <TextBox HorizontalAlignment="Left" Height="29" Margin="249,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtAldersgruppe"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="249,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtSpilletid" />
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="249,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtDistrubutør" />
+        <TextBox HorizontalAlignment="Left" Height="29" Margin="249,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="450" FontSize="18" x:Name="txtGenre" />
+        <TextBox HorizontalAlignment="Left" Height="27" Margin="249,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="81" FontSize="18" x:Name="txtId" IsEnabled="False"/>
+        <Label Content="Brætspil:" HorizontalAlignment="Left" Margin="115,15,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="72" />
+        <Label Content="Antal:" HorizontalAlignment="Left" Margin="115,52,0,0" VerticalAlignment="Top" FontSize="16" Height="32" Width="51" />
+        <Label Content="Aldersgruppe:" HorizontalAlignment="Left" Margin="115,84,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="111" />
+        <Label Content="Spilletid:" HorizontalAlignment="Left" Margin="115,115,0,0" VerticalAlignment="Top" FontSize="16" Height="32" Width="71" />
+        <Label Content="Distrubutør:" HorizontalAlignment="Left" Margin="115,150,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="95" />
+        <Label Content="Genre:" HorizontalAlignment="Left" Margin="116,183,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="57" />
+        <Label Content="ID" HorizontalAlignment="Left" Margin="115,215,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="57" />
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="774,84,0,0" VerticalAlignment="Top" Width="112" Height="31" FontSize="16" FontWeight="Bold" x:Name="btnReset" Click="btnReset_Click"/>
+        <Button Content="Insert" HorizontalAlignment="Left" Margin="774,31,0,0" VerticalAlignment="Top" Width="112" Height="31" FontSize="16" FontWeight="Bold" x:Name="btnInsert" Click="btnInsert_Click"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="774,143,0,0" VerticalAlignment="Top" Width="112" Height="31" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.49,2.283" x:Name="btnDelete" Click="btnDelete_Click" IsEnabled="False"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="774,194,0,0" VerticalAlignment="Top" Width="112" Height="31" FontSize="16" FontWeight="Bold" x:Name="btnUpdate" Click="btnUpdate_Click" IsEnabled="False"/>
+        <Button Content="Tilbage" Margin="10,10,865,0" Width="60" Height="20" Click="Boardgame_Tilbage_Click" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="114,262,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="770" FontSize="18" x:Name="txtSearch" TextChanged="txtSearch_TextChanged"/>
+        <Label Content="Search:" HorizontalAlignment="Left" Margin="26,257,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="60"/>
+        <DataGrid Name="DataGrid1"  HorizontalAlignment="Left" Margin="5,308,0,6" Width="960" RenderTransformOrigin="0.5,0.5" FontSize="18" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid1_SelectionChanged" ColumnWidth="*" Grid.ColumnSpan="2">
             <DataGrid.Columns>
             </DataGrid.Columns>
             <DataGrid.RenderTransform>
@@ -41,6 +44,5 @@
                 </TransformGroup>
             </DataGrid.RenderTransform>
         </DataGrid>
-        <TextBox HorizontalAlignment="Left" Height="27" Margin="146,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154" FontSize="18" x:Name="txtId" Visibility="Hidden" />
     </Grid>
 </Window>

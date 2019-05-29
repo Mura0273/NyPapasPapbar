@@ -5,10 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using PapasPapbar.Domain;
 
 namespace PapasPapbar.Appli
 {
-    class Reservation
+    public class ReservationRepos
     {
+        private Reservation reservation = new Reservation();
+
+        public void AddReservation(Reservation reservation)
+        {
+            reservation.AddReservation(reservation.ReservationDate, reservation.ReservationTime, reservation.CustommerName, reservation.Participant, reservation.ReservationCommant);
+        }
     }
 }
