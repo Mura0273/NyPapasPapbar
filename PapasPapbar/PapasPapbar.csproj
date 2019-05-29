@@ -58,6 +58,9 @@
     <Compile Include="UI\Boardgame.xaml.cs">
       <DependentUpon>Boardgame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\ConfirmDeleteReservation.xaml.cs">
+      <DependentUpon>ConfirmDeleteReservation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\GameStats.xaml.cs">
       <DependentUpon>GameStats.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\Boardgame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ConfirmDeleteReservation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
