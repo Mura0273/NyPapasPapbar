@@ -128,5 +128,35 @@ namespace PapasPapbar.Domain
                 }
 
         }
+        public List<Boardgame> GetBoardgames()
+        {
+            List<Boardgame> boardgames = new List<Boardgame>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand cmd2 = new SqlCommand("ViewGameLibrary", connection);
+                cmd2.CommandType = CommandType.StoredProcedure;
+
+                SqlDataReader reader = cmd2.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string boardgameName = reader["Boardgame_Name"].ToString();
+                        string numberOfPlayers = reader["Player_Count"].ToString();
+                        string audience = reader["Audience"].ToString();
+                        string expectedGameTime = reader["Game_Time"].ToString();
+                        string distributor = reader["Distributor"].ToString();
+                        string gameTag = reader["GameTag"].ToString();
+                        string boardgameId = reader["Boardgame_Id"].ToString();
+                    }
+                }
+            }
+
+            return boardgames;
+        }
     }
 }
