@@ -108,8 +108,8 @@ namespace PapasPapbar.UI
         {
             try
             {
-                DataGrid dg2 = (DataGrid)sender;
-                DataRowView rowSelected = dg2.SelectedItem as DataRowView;
+                DataGrid dg = (DataGrid)sender;
+                DataRowView rowSelected = dg.SelectedItem as DataRowView;
                 if (rowSelected != null)
                 {
                     txtMemberNo.Text = rowSelected[6].ToString();
@@ -128,8 +128,8 @@ namespace PapasPapbar.UI
             }
         }
 
-        private SqlCommand cmd2;
-        private SqlDataReader rdr2;
+        private SqlCommand cmd;
+        private SqlDataReader rdr;
         public string connectionString =
                     "Server=EALSQL1.eal.local; " +
                     "Database= C_DB13_2018; " +
@@ -143,10 +143,10 @@ namespace PapasPapbar.UI
             try
             {
                 con.Open();
-                cmd2 = new SqlCommand("Select * From Membership Where Member_Name Like '%" + txtSearch.Text.Trim() + "%' OR Member_Email Like '%" + txtSearch.Text.Trim() + "%' OR Sub_Date Like '%" + txtSearch.Text.Trim() + "%' OR End_Date Like '%" + txtSearch.Text.Trim() + "%' Order By Member_No Desc", con);
-                rdr2 = cmd2.ExecuteReader();
+                cmd = new SqlCommand("Select * From Membership Where Member_Name Like '%" + txtSearch.Text.Trim() + "%' OR Member_Email Like '%" + txtSearch.Text.Trim() + "%' OR Sub_Date Like '%" + txtSearch.Text.Trim() + "%' OR End_Date Like '%" + txtSearch.Text.Trim() + "%' Order By Member_No Desc", con);
+                rdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
-                dt.Load(rdr2);
+                dt.Load(rdr);
                 DataGrid2.ItemsSource = dt.DefaultView;
                 con.Close();
                 DataGrid2.Columns[4].Visibility = Visibility.Collapsed;
@@ -157,17 +157,17 @@ namespace PapasPapbar.UI
             }
         }
 
-        public void ShowData_Membership()
+        private void ShowData_Membership()
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
                 {
                     con.Open();
-                    cmd2 = new SqlCommand("Select * From Game_Library", con);
-                    rdr2 = cmd2.ExecuteReader();
+                    cmd = new SqlCommand("Select * From Game_Library", con);
+                    rdr = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
-                    dt.Load(rdr2);
+                    dt.Load(rdr);
                     DataGrid2.ItemsSource = dt.DefaultView;
                     con.Close();
                     DataGrid2.Columns[4].Visibility = Visibility.Collapsed;
