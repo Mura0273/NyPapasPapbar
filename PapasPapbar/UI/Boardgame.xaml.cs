@@ -22,7 +22,7 @@ namespace PapasPapbar.UI
         private Domain.Boardgame boardgame = new Domain.Boardgame();
         //private Boardgame boardgame;
         //private int boardgameId;
-        private SqlDataReader reader;
+        private SqlDataReader rdr;
         private SqlCommand cmd;
 
 
@@ -36,14 +36,14 @@ namespace PapasPapbar.UI
         }
 
 
-        public void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ShowData_Boardgame();
             DataGrid1.Columns[4].Visibility = Visibility.Collapsed;
         }
 
         //Indsætfunktion til Boardgame
-        public void btnInsert_Click(object sender, RoutedEventArgs e)
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
             Domain.Boardgame boardgame = new Domain.Boardgame();
             boardgame.BoardgameName = txtBrætspil.Text.ToString();
@@ -69,36 +69,15 @@ namespace PapasPapbar.UI
         }
 
         //Slettefunktion til Boardgame
-        public void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (boardgame != null)
-            {
-                WindowDeleteOrder weo = new WindowDeleteOrder(boardgame);
-                weo.ShowDialog();
-                Update();
-            }
-            else
-            {
-                WindowShowDialog wsd = new WindowShowDialog();
-                wsd.LabelShowDialog.Content = "Ingen ordre er valgt!";
-                wsd.ShowDialog();
-            }
-            //List<Boardgame> boardgames = boardgameRepos.DisplayBoardgame(_boardgame);
-            //for (int i = 0; i < orderlines.Count; i++)
-            //{
-            //    Product product = orderlines[i].Product;
-            //    product.ProductAmount += orderlines[i].Amount;
-            //    productRepository.EditProduct(product);
-            //    boardgameRepos.DeleteBoardgame(boardgame.BoardgameId);
-            //}
-
-            //ShowData_Boardgame();
-            //Reset_Boardgame();
-            //this.Close();
+            ShowData_Boardgame();
+            Reset_Boardgame();
+            this.Close();
         }
 
         //Updatefunktion til Boardgame
-        public void btnUpdate_Click(object sender, RoutedEventArgs e)
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (txtAntal != null && txtAldersgruppe != null && txtSpilletid != null && txtDistrubutør != null && txtGenre != null)
             {
@@ -121,7 +100,7 @@ namespace PapasPapbar.UI
         }
 
         //Nulstil Boardgame
-        public void btnReset_Click(object sender, RoutedEventArgs e)
+        private void btnReset_Click(object sender, RoutedEventArgs e)
         {
             Reset_Boardgame();
         }
@@ -142,15 +121,15 @@ namespace PapasPapbar.UI
         }
 
         //Søgefunktion til Boardgame
-        public void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             DataTable dt = new DataTable();
-            dt.Load(reader);
+            dt.Load(rdr);
             DataGrid1.ItemsSource = dt.DefaultView;
             DataGrid1.Columns[0].Visibility = Visibility.Collapsed;
         }
 
-        public void DataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid dg = (DataGrid)sender;
             DataRowView rowSelected = dg.SelectedItem as DataRowView;
@@ -175,7 +154,7 @@ namespace PapasPapbar.UI
             "User Id=C_STUDENT13; " +
             "Password=C_OPENDB13;";
 
-        public void ShowData_Boardgame()
+        private void ShowData_Boardgame()
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -183,9 +162,9 @@ namespace PapasPapbar.UI
                 {
                     con.Open();
                     cmd = new SqlCommand("Select * From Game_Library", con);
-                    reader = cmd.ExecuteReader();
+                    rdr = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
-                    dt.Load(reader);
+                    dt.Load(rdr);
                     DataGrid1.ItemsSource = dt.DefaultView;
                     con.Close();
                     DataGrid1.Columns[4].Visibility = Visibility.Collapsed;

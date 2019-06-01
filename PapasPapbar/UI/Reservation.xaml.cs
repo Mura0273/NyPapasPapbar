@@ -93,8 +93,8 @@ namespace PapasPapbar.UI
         {
             try
             {
-                DataGrid dg3 = (DataGrid)sender;
-                DataRowView rowSelected = dg3.SelectedItem as DataRowView;
+                DataGrid dg = (DataGrid)sender;
+                DataRowView rowSelected = dg.SelectedItem as DataRowView;
                 if (rowSelected != null)
                 {
                     txtReservationId.Text = rowSelected[6].ToString();
@@ -115,8 +115,8 @@ namespace PapasPapbar.UI
             }
         }
 
-        private SqlCommand cmd3;
-        private SqlDataReader rdr3;
+        private SqlCommand cmd;
+        private SqlDataReader rdr;
         public string connectionString =
                     "Server=EALSQL1.eal.local; " +
                     "Database= C_DB13_2018; " +
@@ -130,10 +130,10 @@ namespace PapasPapbar.UI
             try
             {
                 con.Open();
-                cmd3 = new SqlCommand("Select * From Reservation Where Rerservation_Date Like '%" + txtSearch.Text.Trim() + "%' OR Reservation_Time Like '%" + txtSearch.Text.Trim() + "%' OR Customer_Name Like '%" + txtSearch.Text.Trim() + "%' OR Participant Like '%" + txtSearch.Text.Trim() + "%' OR Comments Like '%" + txtSearch.Text.Trim() + "%' Order By Reservation_ID Desc", con);
-                rdr3 = cmd3.ExecuteReader();
+                cmd = new SqlCommand("Select * From Reservation Where Rerservation_Date Like '%" + txtSearch.Text.Trim() + "%' OR Reservation_Time Like '%" + txtSearch.Text.Trim() + "%' OR Customer_Name Like '%" + txtSearch.Text.Trim() + "%' OR Participant Like '%" + txtSearch.Text.Trim() + "%' OR Comments Like '%" + txtSearch.Text.Trim() + "%' Order By Reservation_ID Desc", con);
+                rdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
-                dt.Load(rdr3);
+                dt.Load(rdr);
                 DataGrid3.ItemsSource = dt.DefaultView;
                 con.Close();
                 DataGrid3.Columns[4].Visibility = Visibility.Collapsed;
@@ -144,17 +144,17 @@ namespace PapasPapbar.UI
             }
         }
 
-        public void ShowData_Reservation()
+        private void ShowData_Reservation()
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
                 {
                     con.Open();
-                    cmd3 = new SqlCommand("Select * From Reservation", con);
-                    rdr3 = cmd3.ExecuteReader();
+                    cmd = new SqlCommand("Select * From Reservation", con);
+                    rdr = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
-                    dt.Load(rdr3);
+                    dt.Load(rdr);
                     DataGrid3.ItemsSource = dt.DefaultView;
                     con.Close();
                     DataGrid3.Columns[4].Visibility = Visibility.Collapsed;
