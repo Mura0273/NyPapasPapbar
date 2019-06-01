@@ -8,7 +8,6 @@ namespace PapasPapbar.Appli
 {
     interface IMembership
     {
-
         //public void Attach(IMembership m)
         //{
         //    throw new NotImplementedException();

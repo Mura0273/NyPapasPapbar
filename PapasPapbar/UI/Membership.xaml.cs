@@ -143,7 +143,9 @@ namespace PapasPapbar.UI
             try
             {
                 con.Open();
-                cmd = new SqlCommand("Select * From Membership Where Member_Name Like '%" + txtSearch.Text.Trim() + "%' OR Member_Email Like '%" + txtSearch.Text.Trim() + "%' OR Sub_Date Like '%" + txtSearch.Text.Trim() + "%' OR End_Date Like '%" + txtSearch.Text.Trim() + "%' Order By Member_No Desc", con);
+                cmd = new SqlCommand("Select Member_No, Member_Name, Member_Email, Sub_Date, End_Date From Membership Where Member_Name Like '%" + 
+                    txtSearch.Text.Trim() + "%' OR Member_Email Like '%" + txtSearch.Text.Trim() + "%' OR Sub_Date Like '%" + txtSearch.Text.Trim() + 
+                    "%' OR End_Date Like '%" + txtSearch.Text.Trim() + "%' Order By Member_No Desc", con);
                 rdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(rdr);
@@ -164,7 +166,7 @@ namespace PapasPapbar.UI
                 try
                 {
                     con.Open();
-                    cmd = new SqlCommand("Select * From Game_Library", con);
+                    cmd = new SqlCommand("Select Member_No, Member_Name, Member_Email, Sub_Date, End_Date From Game_Library", con);
                     rdr = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
                     dt.Load(rdr);

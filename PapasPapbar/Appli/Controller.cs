@@ -10,26 +10,6 @@ namespace PapasPapbar.Appli
 {
     public class Controller
     {
-        //public void AddBoardGame()
-        //{
-        //    BoardgameRepos BG = new BoardgameRepos();
-        //    BG.AddBoardgame();
 
-        //}
-            //public void UpdateBoardGame()
-            //{
-            //    BoardgameRepos BG = new BoardgameRepos();
-            //    BG.UpdateBoardgame();
-            //}
-            //public void DeleteBoardGame()
-            //{
-            //    BoardgameRepos BG = new BoardgameRepos();
-            //    BG.DeleteBoardgame();
-            //}
-            //public void ReadBoardGameData()
-            //{
-            //    BoardgameRepos BG = new BoardgameRepos();
-            //    BG.ReadData();
-            //}
-        }
+    }
 }

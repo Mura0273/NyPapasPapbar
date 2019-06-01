@@ -163,7 +163,7 @@ namespace PapasPapbar.UI
                 try
                 {
                     con.Open();
-                    cmd = new SqlCommand("Select * From Game_Library", con);
+                    cmd = new SqlCommand("Select Boardgame_Name, Player_Count, Audience, Game_Time, Distributor, GameTag, Boardgame_Id From Game_Library", con);
                     rdr = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
                     dt.Load(rdr);

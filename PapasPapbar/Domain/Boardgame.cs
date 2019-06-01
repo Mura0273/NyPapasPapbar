@@ -92,25 +92,25 @@ namespace PapasPapbar.Domain
             using (SqlConnection con = new SqlConnection(Connection.connectionString))
                 try
                 {
-                    SqlCommand cmd2 = new SqlCommand("ViewGameLibrary", con);
+                    SqlCommand cmd = new SqlCommand("ViewGameLibrary", con);
                     con.Open();
-                    cmd2.CommandType = CommandType.StoredProcedure;
-                    SqlDataReader reader = cmd2.ExecuteReader();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader rdr = cmd.ExecuteReader();
 
 
 
-                    if (reader.HasRows)
+                    if (rdr.HasRows)
                     {
-                        while (reader.Read())
+                        while (rdr.Read())
                         {
 
-                            string boardgameName = reader["Boardgame_Name"].ToString();
-                            string numberOfPlayers = reader["Player_Count"].ToString();
-                            string audience = reader["Audience"].ToString();
-                            string expectedGameTime = reader["Game_Time"].ToString();
-                            string distributor = reader["Distributor"].ToString();
-                            string gameTag = reader["GameTag"].ToString();
-                            string boardgameId = reader["Boardgame_Id"].ToString();
+                            string boardgameName = rdr["Boardgame_Name"].ToString();
+                            string numberOfPlayers = rdr["Player_Count"].ToString();
+                            string audience = rdr["Audience"].ToString();
+                            string expectedGameTime = rdr["Game_Time"].ToString();
+                            string distributor = rdr["Distributor"].ToString();
+                            string gameTag = rdr["GameTag"].ToString();
+                            string boardgameId = rdr["Boardgame_Id"].ToString();
 
                             Console.WriteLine($"\nBoardgame_Name: {boardgameName} \nPlayer_Count: {numberOfPlayers} \nAudience: {audience} " +
                            $"\nGame_Time: {expectedGameTime} \nDistributor: {distributor}\nBoardgame_Id: {boardgameId}\nGameTag: {gameTag}\n");

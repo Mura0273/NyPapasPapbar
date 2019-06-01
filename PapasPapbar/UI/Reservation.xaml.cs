@@ -130,7 +130,9 @@ namespace PapasPapbar.UI
             try
             {
                 con.Open();
-                cmd = new SqlCommand("Select * From Reservation Where Rerservation_Date Like '%" + txtSearch.Text.Trim() + "%' OR Reservation_Time Like '%" + txtSearch.Text.Trim() + "%' OR Customer_Name Like '%" + txtSearch.Text.Trim() + "%' OR Participant Like '%" + txtSearch.Text.Trim() + "%' OR Comments Like '%" + txtSearch.Text.Trim() + "%' Order By Reservation_ID Desc", con);
+                cmd = new SqlCommand("Select Reservation_ID, Rerservation_Date, Reservation_Time, Customer_Name, Participant, Comments, Table_Group_Id From Reservation " +
+                    "Where Rerservation_Date Like '%" + txtSearch.Text.Trim() + "%' OR Reservation_Time Like '%" + txtSearch.Text.Trim() + "%' OR Customer_Name Like '%" + 
+                    txtSearch.Text.Trim() + "%' OR Participant Like '%" + txtSearch.Text.Trim() + "%' OR Comments Like '%" + txtSearch.Text.Trim() + "%' Order By Reservation_ID Desc", con);
                 rdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(rdr);
@@ -151,7 +153,7 @@ namespace PapasPapbar.UI
                 try
                 {
                     con.Open();
-                    cmd = new SqlCommand("Select * From Reservation", con);
+                    cmd = new SqlCommand("Select Reservation_ID, Rerservation_Date, Reservation_Time, Customer_Name, Participant, Comments, Table_Group_Id From Reservation", con);
                     rdr = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
                     dt.Load(rdr);
