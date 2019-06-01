@@ -87,10 +87,9 @@ namespace PapasPapbar.Domain
                 con.Close();
             }
         }
-        public List<Boardgame> GetBoardgame(int boardgameId)
+        public  GetBoardgame(int boardgameId)
         {
-            List<Boardgame> boardgames = new List<Boardgame>();
-
+       
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -114,7 +113,7 @@ namespace PapasPapbar.Domain
                         string gameTag = (reader["GameTag"].ToString());
                         int _boardgameId = int.Parse(reader["Boardgame_Id"].ToString());
 
-                        boardgames.Add(new Boardgame(boardgameName, playerCount, audience, gameTime, distributor, gameTag, _boardgameId));
+               
                     }
                 }
             }
