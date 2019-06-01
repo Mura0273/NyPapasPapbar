@@ -27,22 +27,23 @@ namespace PapasPapbar.Appli
 
         public void InsertBoardgame(Boardgame boardgame)
         {
-            boardgame.InsertBoardgame(boardgame.BoardgameName, boardgame.PlayerCount, boardgame.Audience, boardgame.GameTime, boardgame.Distributor, boardgame.GameTag);
+            boardgame.InsertBoardgame(boardgame.BoardgameName, boardgame.PlayerCount, 
+            boardgame.Audience, boardgame.GameTime, boardgame.Distributor, boardgame.GameTag);
         }
 
         public void UpdateBoardgame(Boardgame boardgame)
         {
-            boardgame.UpdateBoardgame(boardgame.BoardgameName, boardgame.PlayerCount, boardgame.Audience, boardgame.GameTime, boardgame.Distributor, boardgame.GameTag, boardgame.BoardgameId);
+            boardgame.UpdateBoardgame(boardgame.BoardgameName, boardgame.PlayerCount, boardgame.Audience,
+            boardgame.GameTime, boardgame.Distributor, boardgame.GameTag, boardgame.BoardgameId);
         }
 
         public void DeleteBoardgame(int boardgameId)
         {
             boardgame.DeleteBoardgame(boardgameId);
         }
-        
-        //public List<Boardgame> DisplayBoardgame(Boardgame boardgame)
-        //{
-        //    return GetBoardgame();
-        //}
+        public void GetBoardgame(Boardgame boardgame)
+        {
+            boardgame.GetBoardgame();
+        }
     }
 }

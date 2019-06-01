@@ -20,6 +20,7 @@ namespace PapasPapbar.UI
         }
         private Appli.BoardgameRepos boardgameRepos = new Appli.BoardgameRepos();
         private Domain.Boardgame boardgame = new Domain.Boardgame();
+        private List<Boardgame> boardgames = new List<Boardgame>();
         //private Boardgame boardgame;
         //private int boardgameId;
         private SqlDataReader rdr;
@@ -156,6 +157,7 @@ namespace PapasPapbar.UI
 
         private void ShowData_Boardgame()
         {
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
