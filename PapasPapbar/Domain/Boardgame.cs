@@ -87,38 +87,46 @@ namespace PapasPapbar.Domain
                 con.Close();
             }
         }
-        public  GetBoardgame(int boardgameId)
+        public static void GetBoardgame()
         {
-       
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                SqlCommand command = new SqlCommand("ViewBoardgameLibrary", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@BoardgameId", boardgameId);
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
+            using (SqlConnection con = new SqlConnection(Connection.connectionString))
+                try
                 {
-                    while (reader.Read())
+                    SqlCommand cmd2 = new SqlCommand("ViewGameLibrary", con);
+                    con.Open();
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader reader = cmd2.ExecuteReader();
+
+
+
+                    if (reader.HasRows)
                     {
+                        while (reader.Read())
+                        {
 
-                        string boardgameName = (reader["Boardgame_Name"].ToString());
-                        string playerCount = (reader["Player_Count"].ToString());
-                        string audience = (reader["Audience"].ToString());
-                        string gameTime = (reader["Game_Time"].ToString());
-                        string distributor = (reader["Distributor"].ToString());
-                        string gameTag = (reader["GameTag"].ToString());
-                        int _boardgameId = int.Parse(reader["Boardgame_Id"].ToString());
+                            string boardgameName = reader["Boardgame_Name"].ToString();
+                            string numberOfPlayers = reader["Player_Count"].ToString();
+                            string audience = reader["Audience"].ToString();
+                            string expectedGameTime = reader["Game_Time"].ToString();
+                            string distributor = reader["Distributor"].ToString();
+                            string gameTag = reader["GameTag"].ToString();
+                            string boardgameId = reader["Boardgame_Id"].ToString();
 
-               
+                            Console.WriteLine($"\nBoardgame_Name: {boardgameName} \nPlayer_Count: {numberOfPlayers} \nAudience: {audience} " +
+                           $"\nGame_Time: {expectedGameTime} \nDistributor: {distributor}\nBoardgame_Id: {boardgameId}\nGameTag: {gameTag}\n");
+
+
+                        }
                     }
-                }
-            }
+                    con.Close();
 
-            return boardgames;
+                    Console.ReadKey();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Fejl: " + e.Message);
+                }
+
         }
     }
 }
